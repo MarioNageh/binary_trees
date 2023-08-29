@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -pedantic
-SRCS =  binary_tree_print.c  tests/2-main.c 2-binary_tree_insert_right.c 0-binary_tree_node.c
+SRCS =  tests/3-main.c $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 FOLDER = outputs
 TARGET = $(FOLDER)/1-left
