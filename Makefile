@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -pedantic
-SRCS =  tests/9-main.c $(wildcard *.c)
+SRCS =  tests/10-main.c $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 FOLDER = outputs
 TARGET = $(FOLDER)/1-left
