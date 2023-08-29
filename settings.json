@@ -1,0 +1,7 @@
+"files.associations": {
+    "*.c": {
+        "editor.tabSize": 4,         // Specify your preferred tab size
+        "editor.insertSpaces": true, // Use spaces instead of tabs
+        "editor.autoIndent": "full"  // Automatically adjust indentation
+    }
+}
