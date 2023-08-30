@@ -28,13 +28,11 @@ int is_perfect(const binary_tree_t *tree, int max_height, int level)
 	if (!tree)
         return (max_height == level);
 
-
+	if ((tree->left && (!tree->right)) || (tree->right && !tree->left))
+		return (0);
+	
 	if (!tree->left && !tree->right)
 		return (max_height == level + 1);
-
-
-	if (!tree->left || !tree->right)
-		return (0);
 
 	return (is_perfect(tree->left, max_height, level + 1) &&
 			is_perfect(tree->right, max_height, level + 1));
