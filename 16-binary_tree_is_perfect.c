@@ -10,6 +10,7 @@ int get_tree_height(const binary_tree_t *tree)
 {
 	if (!tree)
 		return (0);
+
 	return (1 + (get_tree_height(tree->left) > get_tree_height(tree->right) ?
 			get_tree_height(tree->left) : get_tree_height(tree->right)));
 }
@@ -24,8 +25,12 @@ int get_tree_height(const binary_tree_t *tree)
 */
 int is_perfect(const binary_tree_t *tree, int max_height, int level)
 {
-	if(!tree)
-		return (level == max_height);
+	if (!tree->left && !tree->right)
+		return (max_height == level + 1);
+
+
+	if (!tree->left || !tree->right)
+		return (0);
 
 	return (is_perfect(tree->left, max_height, level + 1) &&
 			is_perfect(tree->right, max_height, level + 1));
