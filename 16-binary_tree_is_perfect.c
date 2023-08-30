@@ -25,6 +25,10 @@ int get_tree_height(const binary_tree_t *tree)
 */
 int is_perfect(const binary_tree_t *tree, int max_height, int level)
 {
+	if (!tree)
+        return (max_height == level);
+
+
 	if (!tree->left && !tree->right)
 		return (max_height == level + 1);
 
