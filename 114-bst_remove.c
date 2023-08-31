@@ -2,7 +2,8 @@
 #include <limits.h>
 
 
-bst_t *find_inorder_successor(bst_t *tree) {
+bst_t *find_inorder_successor(bst_t *tree)
+{
 
 	bst_t *node;
 
@@ -13,7 +14,7 @@ bst_t *find_inorder_successor(bst_t *tree) {
 	if (node->right)
 	{
 		node = node->right;
-		while(node-> left)
+		while (node->left)
 			node = node->left;
 		return (node);
 	}
@@ -21,9 +22,9 @@ bst_t *find_inorder_successor(bst_t *tree) {
 	while (node->parent && node->parent->right == node)
 		node = node->parent;
 
-	if(!node->parent)
+	if (!node->parent)
 		return (NULL);
-	
+
 	return (node->parent);
 
 }
@@ -45,7 +46,7 @@ bst_t *swap(bst_t *a, bst_t *b)
 
 	temp->parent = b;
 	return (b);
-	
+
 }
 
 bst_t *bst_remove(bst_t *root, int value)
@@ -62,7 +63,6 @@ bst_t *bst_remove(bst_t *root, int value)
 		else
 			current = current->right;
 	}
-	//printf("current: %d\n", current->n);
 	/*Cas If No Children*/
 	if (!current->left && !current->right)
 	{
@@ -79,7 +79,7 @@ bst_t *bst_remove(bst_t *root, int value)
 
 	if (!current)
 		return (NULL);
-	/*Cas If On Children*/	
+	/*Cas If On Children*/
 	if (!current->right)
 	{
 		swap(current, current->left);
@@ -92,10 +92,9 @@ bst_t *bst_remove(bst_t *root, int value)
 		free(current);
 		return (root);
 	}
-	if (current ->left && current->right)
+	if (current->left && current->right)
 	{
 		successor = find_inorder_successor(current);
-		//printf("successor: %d\n", successor->n);
 		current->n = successor->n;
 		if (successor->parent->left == successor)
 			successor->parent->left = NULL;
