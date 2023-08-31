@@ -11,11 +11,11 @@ bst_t *bst_insert(bst_t **tree, int value)
 {
 	bst_t *new_node, *current;
 
-	new_node = binary_tree_node(NULL, value);
+	new_node = (bst_t *) binary_tree_node(NULL, value);
 	if (new_node == NULL)
 		return (NULL);
 
-	if (*tree == NULL)
+	if (!*tree)
 	{
 		*tree = new_node;
 		return (new_node);
