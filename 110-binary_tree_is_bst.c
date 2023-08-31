@@ -21,12 +21,15 @@ int is_subtree_greater_than(const binary_tree_t *tree, int value) {
 }
 
 int binary_tree_is_bst(const binary_tree_t *tree) {
+
+	int left_bst, right_bst;
+
     if (!tree) {
         return true;
     }
 
-    int left_bst = is_subtree_less_than(tree->left, tree->n) && binary_tree_is_bst(tree->left);
-    int right_bst = is_subtree_greater_than(tree->right, tree->n) && binary_tree_is_bst(tree->right);
+     left_bst = is_subtree_less_than(tree->left, tree->n) && binary_tree_is_bst(tree->left);
+     right_bst = is_subtree_greater_than(tree->right, tree->n) && binary_tree_is_bst(tree->right);
 
     return left_bst && right_bst;
 }
