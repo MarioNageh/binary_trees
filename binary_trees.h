@@ -56,5 +56,6 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 typedef struct binary_tree_s bst_t;
 int binary_tree_is_bst(const binary_tree_t *tree);
 bst_t *bst_insert(bst_t **tree, int value);
+bst_t *array_to_bst(int *array, size_t size);
 
 #endif /* BINARY_TREES_H */
