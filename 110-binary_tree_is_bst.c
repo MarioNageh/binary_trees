@@ -1,35 +1,37 @@
 #include "binary_trees.h"
+#include <limits.h>
 
-int is_subtree_less_than(const binary_tree_t *tree, int value) {
-    if (!tree) {
-        return true;
-    }
+/**
+ * is_bst - checks if a binary tree is a valid Binary Search Tree
+ * @tree: pointer to the root node of the tree to check
+ * @min: minimum value
+ * @max: maximum value
+ * Return: 1 if tree is a valid BST, and 0 otherwise
+*/
+int is_bst(const binary_tree_t *tree, int min, int max)
+{
 
-    return (tree->n < value) &&
-           is_subtree_less_than(tree->left, value) &&
-           is_subtree_less_than(tree->right, value);
+	if (!tree)
+		return (1);
+
+	if (tree->n < min || tree->n > max)
+		return (0);
+
+	return (is_bst(tree->left, min, tree->n - 1) &&
+		is_bst(tree->right, tree->n + 1, max));
 }
 
-int is_subtree_greater_than(const binary_tree_t *tree, int value) {
-    if (!tree) {
-        return true;
-    }
 
-    return (tree->n > value) &&
-           is_subtree_greater_than(tree->left, value) &&
-           is_subtree_greater_than(tree->right, value);
-}
-
-int binary_tree_is_bst(const binary_tree_t *tree) {
-
-	int left_bst, right_bst;
-
-    if (!tree) {
-        return true;
-    }
-
-     left_bst = is_subtree_less_than(tree->left, tree->n) && binary_tree_is_bst(tree->left);
-     right_bst = is_subtree_greater_than(tree->right, tree->n) && binary_tree_is_bst(tree->right);
-
-    return left_bst && right_bst;
+/**
+ * binary_tree_is_bst - checks if a binary tree is a valid Binary Search Tree
+ * @tree: pointer to the root node of the tree to check
+ * Return: 1 if tree is a valid BST, and 0 otherwise
+ * If tree is NULL, return 0
+ * A binary tree is a BST if tree is NULL or
+*/
+int binary_tree_is_bst(const binary_tree_t *tree)
+{
+	if (!tree)
+		return (0);
+	return (is_bst(tree, INT_MIN, INT_MAX));
 }
