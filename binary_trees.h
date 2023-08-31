@@ -53,6 +53,8 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
 /*Binary Search Tree*/
+typedef struct binary_tree_s bst_t;
 int binary_tree_is_bst(const binary_tree_t *tree);
+bst_t *bst_insert(bst_t **tree, int value);
 
 #endif /* BINARY_TREES_H */
