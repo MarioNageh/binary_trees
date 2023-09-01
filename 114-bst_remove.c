@@ -78,6 +78,8 @@ bst_t *bst_remove(bst_t *root, int value)
 			else
 				current->parent->right = NULL;
 		}
+		else
+			root = NULL;
 		free(current);
 		return (root);
 	}
