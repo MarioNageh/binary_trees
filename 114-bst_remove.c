@@ -84,6 +84,7 @@ bst_t *bst_remove(bst_t *root, int value)
 		return (root);
 	}
 
+
 	if (!current)
 		return (NULL);
 	/*Cas If On Children*/
@@ -99,15 +100,22 @@ bst_t *bst_remove(bst_t *root, int value)
 		free(current);
 		return (root);
 	}
+
 	if (current->left && current->right)
 	{
 		successor = find_inorder_successor(current);
+		printf("Successor: %d\n", successor->n);
+		printf("Current: %d\n", current->n);
 		current->n = successor->n;
 		if (successor->parent->left == successor)
 			successor->parent->left = NULL;
 		else
 			successor->parent->right = NULL;
 		free(successor);
+
+
+
+
 		return (root);
 	}
 	return (NULL);

@@ -24,6 +24,20 @@ int main(void)
     tree = bst_remove(tree, 79);
     printf("Removed 79...\n");
     binary_tree_print(tree);
+        binary_tree_delete(tree);
+
+
+exit(0);
+        tree = bst_remove(tree, 2);
+    printf("Removed 2...\n");
+    binary_tree_print(tree);
+
+     tree = bst_remove(tree,87);
+    printf("Removed 87...\n");
+    binary_tree_print(tree);
+
+        if (tree == NULL)
+        printf("NULL\n");
 
     tree = bst_remove(tree, 21);
     printf("Removed 21...\n");
