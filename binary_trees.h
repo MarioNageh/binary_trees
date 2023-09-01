@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include "limits.h"
 /**
  * struct binary_tree_s - Binary tree node
  *
@@ -60,6 +61,8 @@ bst_t *array_to_bst(int *array, size_t size);
 bst_t *bst_search(const bst_t *tree, int value);
 bst_t *bst_remove(bst_t *root, int value);
 bst_t *find_inorder_successor(bst_t *node) ;
+binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
