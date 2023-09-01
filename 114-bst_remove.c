@@ -1,32 +1,12 @@
 #include "binary_trees.h"
 #include <limits.h>
 
-
-bst_t *find_inorder_successor(bst_t *tree)
-{
-
-	bst_t *node;
-
-	node = tree;
-	if (!node)
-		return (NULL);
-
-	if (node->right)
-	{
-		node = node->right;
-		while (node->left)
-			node = node->left;
-		return (node);
-	}
-
-	while (node->parent && node->parent->right == node)
-		node = node->parent;
-
-	if (!node->parent)
-		return (NULL);
-
-	return (node->parent);
-
+bst_t *find_inorder_successor(bst_t *node) {
+    bst_t *current = node->right;
+    while (current && current->left) {
+        current = current->left;
+    }
+    return current;
 }
 
 bst_t *swap(bst_t *a, bst_t *b)
