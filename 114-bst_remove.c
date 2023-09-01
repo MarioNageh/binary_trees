@@ -56,6 +56,7 @@ bst_t *bst_remove(bst_t *root, int value)
 	if (!root)
 		return (NULL);
 	current = root;
+
 	while (current && current->n != value)
 	{
 		if (value < current->n)
@@ -63,6 +64,10 @@ bst_t *bst_remove(bst_t *root, int value)
 		else
 			current = current->right;
 	}
+
+	if (!current)
+		return (NULL);
+	
 	/*Cas If No Children*/
 	if (!current->left && !current->right)
 	{
