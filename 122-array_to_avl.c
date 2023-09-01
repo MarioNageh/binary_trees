@@ -13,9 +13,7 @@ avl_t *array_to_avl(int *array, size_t size)
 
 	root = NULL;
 	if (size == 0)
-	{
 		return (NULL);
-	}
 	for (i = 0; i < size; i++)
 	{
 		for (j = 0; j < i; j++)
