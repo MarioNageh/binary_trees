@@ -30,13 +30,14 @@ bst_t *swap(bst_t *a, bst_t *b)
 }
 
 bst_t *bst_remove(bst_t *root, int value) {
+    bst_t *current, *parent, *successor;
     if (!root)
         return NULL;
+    current = root;
+    parent = NULL;
 
-    bst_t *current = root;
-    bst_t *parent = NULL; // To keep track of parent node
     while (current && current->n != value) {
-        parent = current; // Update parent before moving to the next node
+        parent = current;
         if (value < current->n)
             current = current->left;
         else
@@ -46,7 +47,6 @@ bst_t *bst_remove(bst_t *root, int value) {
     if (!current)
         return root;
 
-    // Case: No Children
     if (!current->left && !current->right) {
         if (parent) {
             if (parent->left == current)
@@ -60,7 +60,6 @@ bst_t *bst_remove(bst_t *root, int value) {
         return root;
     }
 
-    // Case: One Child
     if (!current->right) {
         if (parent) {
             if (parent->left == current)
@@ -73,6 +72,7 @@ bst_t *bst_remove(bst_t *root, int value) {
         free(current);
         return root;
     }
+
     if (!current->left) {
         if (parent) {
             if (parent->left == current)
@@ -86,11 +86,9 @@ bst_t *bst_remove(bst_t *root, int value) {
         return root;
     }
 
-    // Case: Two Children
-    bst_t *successor = find_inorder_successor(current);
+    successor = find_inorder_successor(current);
     current->n = successor->n;
-    
-    // Remove the successor node from the tree
+
     if (successor->parent->left == successor)
         successor->parent->left = NULL;
     else
