@@ -60,4 +60,8 @@ bst_t *array_to_bst(int *array, size_t size);
 bst_t *bst_search(const bst_t *tree, int value);
 bst_t *bst_remove(bst_t *root, int value);
 bst_t *find_inorder_successor(bst_t *node) ;
+
+typedef struct binary_tree_s avl_t;
+typedef struct binary_tree_s heap_t;
+
 #endif /* BINARY_TREES_H */
